@@ -15,16 +15,7 @@ import {
     git,
     figma,
     docker,
-    meta,
-    starbucks,
-    tesla,
-    shopify,
-    carrent,
-    jobit,
-    tripguide,
-    threejs,
-    todo,
-    miniHR
+    threejs
     
   } from "../assets";
   
@@ -118,59 +109,59 @@ import {
   ];
   
   const experiences = [
-    
-      {
-        title: "Data Analyst",
-        company_name: "WILDAF",
-        icon: reactjs,
-        iconBg: "#E6DEDD",
-        date: "Jan 2023 - Present",
-        points: [
-          "Collecting, processing, and analyzing data to provide actionable insights to stakeholders",
-          "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-          "Utilizing statistical techniques, data visualization tools, and programming languages such as SQL, Python, or R to interpret data trends, patterns, and correlations.",
-          "Participating in code reviews and providing constructive feedback to other developers.",
-        ],
-      },
     {
-      title: "Short Summer program facilitator ",
-      company_name: "Tanzania Excellence Institute",
-      icon: reactjs,
-      iconBg: "#383E56",
-      date: "September 2023 - October 2023",
+      id: "monday-support",
+      category: "Professional experience",
+      marker: "M",
+      title: "Technical Support Engineer – Tier 2/3",
+      organization: "Monday.com Support Operations",
+      location: "Warsaw, Poland",
+      date: "May 2025 – July 2026",
       points: [
-        "Lead instructional sessions where you teach React.js fundamentals",
-        "Collaborate with program organizers to design or refine the curriculum for the React.js summer program.",
-        "Provide guidance, troubleshooting assistance, and code reviews to help participants ",
+        "Investigated Tier 2/3 escalations across APIs, integrations, webhooks, and JSON payloads.",
+        "Troubleshot OAuth and authentication issues and debugged production systems, including P0/P1 incidents.",
+        "Used root-cause analysis to understand complex technical failures, independently resolving approximately 90% of escalations.",
       ],
     },
     {
-      title: "c# Developer",
-      company_name: "Vistula University",
-      icon: reactjs,
-      iconBg: "#E6DEDD",
-      date: "Feb 2022 - present",
+      id: "vistula-degree",
+      category: "Education",
+      marker: "BSc",
+      title: "BSc Computer Engineering",
+      organization: "Vistula University",
+      location: "Warsaw, Poland",
+      date: "Graduated July 2025",
       points: [
-        "Created a mini HR project",
-        "Collaborating with fellow students on various task and projects.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to fellow students.",
+        "Academic focus in Artificial Intelligence, Machine Learning, and Neural Networks.",
+        "Studied Data Structures & Algorithms and Software Engineering.",
+        "Built foundations in Cloud Computing and Computer Networks.",
       ],
     },
     {
-      title: "USAID Volunteer",
-      company_name: "USAID",
-      icon: reactjs,
-      iconBg: "#383E56",
-      date: "Feb 2022 - Present",
+      id: "square-weebly-support",
+      category: "Professional experience",
+      marker: "S",
+      title: "Technical Support Specialist – Tier 1/2",
+      organization: "Square Online & Weebly Support Operations",
+      location: "Warsaw, Poland",
+      date: "April 2024 – May 2025",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Provided Tier 1/2 technical troubleshooting for customer-facing web and e-commerce systems.",
+        "Worked with Square Online and Weebly systems, developing practical experience investigating customer technical issues.",
       ],
     },
-   
+    {
+      id: "independent-ml",
+      category: "Independent development · not employment",
+      marker: "ML",
+      title: "Machine Learning & AI — Independent Development",
+      date: "Self-directed learning",
+      points: [
+        "Implemented and studied Linear Regression, Logistic Regression, and K-Nearest Neighbors through practical local projects.",
+        "Explored Neural Networks, Forward Propagation, Backpropagation, and Convolutional Neural Networks (CNNs).",
+        "Used classification experiments to deepen understanding of model behavior. These projects currently exist locally and are not all published on GitHub.",
+      ],
+    },
   ];
   
   const testimonials = [
@@ -202,61 +193,49 @@ import {
   
   const projects = [
     {
-      name: "Ecommerce Website",
-      description:
-        "Explore a seamless and intuitive online shopping experience on our eCommerce website, crafted with React framework for exceptional performance, responsiveness, and user satisfaction.",
-      tags: [
-        {
-          name: "react",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "mongodb",
-          color: "green-text-gradient",
-        },
-        {
-          name: "tailwind",
-          color: "pink-text-gradient",
-        },
+      id: "kibaliti",
+      name: "KIBALITI",
+      category: "Full-stack application",
+      description: "A corporate travel booking and management platform connecting a React interface with backend services and real-time flight and hotel data.",
+      architecture: ["React", "REST APIs", "Express", "MongoDB"],
+      architectureCaption: "Frontend, backend, and third-party travel API integration.",
+      highlights: [
+        "Third-party APIs for real-time flight and hotel data.",
+        "Request tracing, response validation, and error handling across frontend/backend integration.",
       ],
-      image: carrent,
-      source_code_link: "https://github.com/Tevinpeter/ecommerce_website",
+      tags: ["React", "Node.js", "Express", "MongoDB", "REST APIs"],
+      source_code_link: "https://github.com/Tevinpeter/Kibalit",
+      live_link: "https://kibaliti-1.onrender.com",
     },
     {
-      name: "Todolist App",
-      description:
-        "Discover effortless task management with our TodoList web application, leveraging MongoDB, Express, and EJS for a dynamic and user-friendly experience, seamlessly organizing your tasks with ease.",
-      tags: [
-        {
-          name: "ejs",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "Express",
-          color: "green-text-gradient",
-        },
-        {
-          name: "MongoDB",
-          color: "pink-text-gradient",
-        },
+      id: "student-record-database",
+      name: "Student Record Management Database",
+      category: "Database engineering",
+      description: "A normalized MySQL relational database with 20+ tables for students, academic records, attendance, examinations, guardians, and fees.",
+      architecture: ["Relational schema", "Stored procedures", "Views"],
+      architectureCaption: "Structured data, relational integrity, and reporting.",
+      highlights: [
+        "Foreign-key and many-to-many relationships connect school records across the schema.",
+        "Stored procedures support database operations; views organize data for reporting and analysis.",
       ],
-      image: todo,
-      source_code_link: "https://github.com/Tevinpeter/todolist_app",
+      tags: ["MySQL", "SQL", "Stored Procedures", "Views"],
+      source_code_link: "https://github.com/Tevinpeter/student-record-management-sql.",
+    },
+  ];
+
+  const mlExperiments = [
+    {
+      title: "Regression & Classification",
+      description: "Linear Regression, Logistic Regression, K-Nearest Neighbors (KNN), and classification experiments.",
     },
     {
-      name: "MiniHR",
-      description:
-        "Efficiently manage your HR tasks with MiniHR, a comprehensive project built on the C#.NET framework.Show casing Object oriented Programming ",
-      tags: [
-        {
-          name: " C#.NET",
-          color: "blue-text-gradient",
-        }
-        
-      ],
-      image: miniHR,
-      source_code_link: "https://github.com/Tevinpeter/MiniHR",
+      title: "Neural Network Foundations",
+      description: "Neural Networks, Forward Propagation, and Backpropagation through practical implementations and study.",
+    },
+    {
+      title: "Convolutional Networks",
+      description: "Exploring Convolutional Neural Networks (CNNs) through local experiments.",
     },
   ];
   
-  export { services, technologies, experiences, testimonials, projects };
+  export { services, technologies, experiences, testimonials, projects, mlExperiments };

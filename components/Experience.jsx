@@ -1,76 +1,33 @@
-import React from 'react'
-import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
-import {motion} from 'framer-motion'
-import 'react-vertical-timeline-component/style.min.css';
+import React from 'react';
+import { styles } from '/src/styles.js';
+import { experiences } from '/src/constants';
+import './career-work.css';
 
-import {styles} from '/src/styles.js'
-import { experiences } from '/src/constants'
-import { SectionWrapper } from '/src/hoc';
-import { textVariant } from '../src/utils/motion';
-
-const ExperienceCard = ({experience}) => (
-  <VerticalTimelineElement
-    contentStyle = {{
-      background: "#1d1836",
-      color: '#fff'
-
-    }}
-    contentArrowStyle = {{
-      borderRight: '7px solid #232631'
-    }}
-    date = {experience.date}
-    iconStyle = {{ background: experience.iconBg}}
-    icon = {
-      <div className = "flex justify-center items-center w-full h-full">
-        <img 
-          src = {experience.icon}
-          alt = {experience.company_name}
-          className = 'w-[60%] h-[60%] object-contain'
-        />
-      </div>
-    }
-    >
-    <div className='text-white text-[24px] font-bold'>
-      <h3>{experience.title}</h3>
-      <p className = "text-secondary text-[16px] font-semibold" style = {{margin:0}}>{experience.company_name}</p>
-    </div>
-    <ul className='mt-5 list-disc ml-5 space-y-2'>
-      {experience.points.map((point,index) => (
-        <li
-        key={index}
-        className='text-white-100 text-[14px] pl-1 tracking-wider'
-        >
-        {point}
-
+const Experience = () => (
+  <section id='work' className={`${styles.padding} max-w-7xl mx-auto relative z-0 career-section`} aria-labelledby='journey-heading'>
+    <p className={styles.sectionSubText}>My journey</p>
+    <h2 id='journey-heading' className={styles.sectionHeadText}>Experience &amp; Growth</h2>
+    <p className='career-introduction'>Production troubleshooting, a foundation in computer engineering, and continued hands-on development.</p>
+    <ol className='career-timeline'>
+      {experiences.map((experience) => (
+        <li key={experience.id} className='career-entry'>
+          <div className='career-marker' aria-hidden='true'>{experience.marker}</div>
+          <article className='career-card' aria-labelledby={`${experience.id}-heading`}>
+            <div className='career-meta'>
+              <span className='career-category'>{experience.category}</span>
+              <span>{experience.date}</span>
+            </div>
+            <h3 id={`${experience.id}-heading`}>{experience.title}</h3>
+            {experience.organization && <p className='career-organization'>{experience.organization}</p>}
+            {experience.location && <p className='career-location'>{experience.location}</p>}
+            <ul className='career-points'>
+              {experience.points.map((point) => <li key={point}>{point}</li>)}
+            </ul>
+          </article>
         </li>
       ))}
-    </ul>
-  </VerticalTimelineElement>
+    </ol>
+  </section>
+);
 
-)
-
-
-const Experience = () => {
-  return (
-    <>
-      <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>What i have done so far</p>
-        <h2 className={styles.sectionHeadText}>Work Experience</h2>
-      </motion.div>
-      <div className = "mt-20 flex flex-col">
-       <VerticalTimeline>
-        {experiences.map((experience,index) => {return (
-          <ExperienceCard 
-            key = {index}
-            experience = {experience}
-
-          />
-        )})
-        }
-       </VerticalTimeline>
-
-      </div>
-    </>
-  )}
-
-export default SectionWrapper(Experience, 'work');
+export default Experience;

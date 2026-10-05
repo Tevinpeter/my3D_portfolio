@@ -1,80 +1,53 @@
-import React from 'react'
-import {motion} from "framer-motion"
-import { ComputersCanvas } from '/components/canvas'
-import {styles} from "/src/styles.js"
+import React from 'react';
+import { useReducedMotion } from 'framer-motion';
+import './portfolio-intro.css';
 
-
-// const Hero = () => {
-//   return (
-//     <section className={`relative w-full h-screen mx-auto`}>
-//       <div className={`${styles.paddingX} absolute inset-0 top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5`}>
-//         <div className='flex flex-col justify-center items-center mt-5'>
-//           <div className='w-5 h-5 rounded-full bg-[#4682B4]' />
-//           <div className= "w-1 sm:h-80 h-40 " style={{background:"-webkit-linear-gradient(    -90deg,    #4682B4 0%,    rgba(60, 51, 80, 0) 100%  )"}} />
-//         </div>
-//         <div>
-//           <h1 className={`${styles.heroHeadText} text-white`}>Hello, I'm <span className='text-[#4682B4]'>Tevin</span></h1>
-//           <p className={`${styles.heroSubText} mt-2 text-white-100`}>I'm a software engineer specializing in building digital
-//           experiences.<br className='sm:block hidden' />Always ready to turn ideas into ventures for the  future  </p>
-//         </div>
-//       </div>
-//       <ComputersCanvas />
-//       <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
-//         <a href='#about'>
-//           <div className='w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'>
-//             <motion.div
-//               animate={{
-//                 y: [0, 24, 0],
-//               }}
-//               transition={{
-//                 duration: 1.5,
-//                 repeat: Infinity,
-//                 repeatType: "loop",
-//               }}
-//               className='w-3 h-3 rounded-full bg-secondary mb-1'
-//             />
-//           </div>
-//         </a>
-//       </div>
-
-//     </section>
-//   )
-// }
 const Hero = () => {
-  return (
-    
-    <div className="relative h-full w-full">
-      {/* Video */}
-      <video
-        autoPlay
-        muted
-        loop
-        className="absolute top-0 h-full w-full object-cover"
-      >
-        <source src="/public_blackhole.webm" type="video/webm" />
-      </video>
+  const reducedMotion = useReducedMotion();
 
-      {/* Content Overlay */}
-      <div className="absolute inset-0 max-w-7xl mx-auto flex flex-row items-start gap-5 p-5" style={{ marginTop: '100px' }}>
-        <div className="flex flex-col justify-center items-center mt-5">
-          <div className="w-5 h-5 rounded-full bg-[#4682B4]" />
-          <div
-            className="w-1 sm:h-80 h-40"
-            style={{
-              background:
-                "-webkit-linear-gradient(    -90deg,    #4682B4 0%,    rgba(60, 51, 80, 0) 100%  )",
-            }}
-          />
+  const exploreWork = () => {
+    const section = document.getElementById('projects');
+    if (section) {
+      window.scrollTo({
+        top: section.getBoundingClientRect().top + window.scrollY - 80,
+        behavior: reducedMotion ? 'instant' : 'smooth',
+      });
+    }
+  };
+
+  return (
+    <section className='portfolio-hero' aria-labelledby='hero-heading'>
+      {!reducedMotion && (
+        <video autoPlay muted loop playsInline aria-hidden='true' className='portfolio-hero-video'>
+          <source src='/public_blackhole.webm' type='video/webm' />
+        </video>
+      )}
+      <div className='portfolio-hero-content'>
+        <p className='portfolio-hero-eyebrow'>
+          Hi, I'm <span className='portfolio-name'>Tevin</span>.
+        </p>
+        <h1 id='hero-heading'>I build software and solve complex technical problems.</h1>
+        <p className='portfolio-hero-summary'>
+          Software Developer &amp; Computer Engineering graduate building across web applications,
+          APIs, databases and intelligent systems.
+        </p>
+        <div className='portfolio-hero-actions'>
+          <button type='button' className='portfolio-cta portfolio-cta-primary' onClick={exploreWork}>
+            Explore My Work
+          </button>
+          <button type='button' className='portfolio-cta portfolio-cta-secondary' disabled aria-describedby='cv-unavailable'>
+            Download CV
+          </button>
+          <span id='cv-unavailable' className='sr-only'>CV download is not yet available.</span>
         </div>
-        <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>Hello, I'm <span className=' sm:text-[75px] xs:text-[65px] text-[55px] lg:leading-[125px] text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500'>Tevin</span></h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100 sm:block hidden`}>I'm a software engineer
-            <br className='sm:block hidden' />Turning ideas into tomorrow's ventures.</p>
-        </div>
+        <nav className='portfolio-socials' aria-label='Professional profiles and email'>
+          <a href='https://github.com/Tevinpeter' target='_blank' rel='noopener noreferrer'>GitHub</a>
+          <a href='https://www.linkedin.com/in/tevin-peter-9a0397247' target='_blank' rel='noopener noreferrer'>LinkedIn</a>
+          <a href='mailto:tevinpeter74@gmail.com'>Email</a>
+        </nav>
       </div>
-    </div>
-    
+    </section>
   );
 };
 
-export default Hero
+export default Hero;

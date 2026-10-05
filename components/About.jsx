@@ -1,64 +1,63 @@
-import React from 'react'
-import Tilt from "react-tilt"
-import {motion} from "framer-motion"
+import React from 'react';
+import { styles } from '/src/styles.js';
+import { web, backend, mobile, creator } from '/src/assets';
+import './portfolio-intro.css';
 
-import {styles} from "/src/styles.js";
-import {services} from "/src/constants";
-import {fadeIn, textVariant} from "/src/utils/motion.js";
-import { SectionWrapper } from '/src/hoc';
+const capabilities = [
+  {
+    title: 'Software Engineering',
+    description: 'Building maintainable applications and turning requirements into working systems.',
+    icon: web,
+  },
+  {
+    title: 'Backend & APIs',
+    description: 'Working with application logic, REST APIs, integrations, authentication and data.',
+    icon: backend,
+  },
+  {
+    title: 'Data & Databases',
+    description: 'Designing and working with relational and NoSQL data systems.',
+    icon: mobile,
+  },
+  {
+    title: 'Problem Solving',
+    description: 'Algorithms, debugging, root-cause analysis and breaking complex problems into manageable pieces.',
+    icon: creator,
+  },
+];
 
-const ServiceCard = ({index,title,icon}) => {
-  return (
-    <Tilt
-      options = {{
-        max:45,
-        scale:1,
-        speed: 450
-      }}
-      className = 'xs:w-[250px] w-full'
-    >
-      <motion.div
-      variants={fadeIn("right","spring",0.5 *index,0.75)}
-      className = 'w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
-      >
-      <div
-      className = "bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
-      >
-      <img src ={icon} alt = {title} className ="w-16 h-16 object-contain" />
-      <h3 className='text-white text-[20px] font-bold text-center'>{title}</h3>
+const About = () => (
+  <section className={`${styles.padding} max-w-7xl mx-auto relative z-0 portfolio-about`} aria-labelledby='about-heading'>
+    <span className='hash-span' id='about' aria-hidden='true'>&nbsp;</span>
+    <p className={styles.sectionSubText}>INTRODUCTION</p>
+    <h2 id='about-heading' className={styles.sectionHeadText}>Overview</h2>
+    <div className='portfolio-about-copy'>
+      <p>
+        I'm a Computer Engineering graduate and software developer who enjoys understanding how
+        systems work—from the interface a user interacts with to the APIs, databases, and
+        infrastructure operating underneath.
+      </p>
+      <p>
+        My experience includes building software and troubleshooting production systems involving
+        APIs, webhooks, JSON, authentication, and complex technical issues. That combination has
+        taught me to approach software not just as code to be written, but as systems to be
+        understood, debugged, and improved.
+      </p>
+      <p>
+        I'm currently deepening my work in software engineering, algorithms, and intelligent systems,
+        with a particular interest in building products that solve meaningful real-world problems.
+      </p>
+    </div>
+    <ul className='portfolio-capabilities'>
+      {capabilities.map(({ title, description, icon }) => (
+        <li key={title} className='portfolio-capability'>
+          <img src={icon} alt='' width={48} height={48} loading='lazy' />
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+);
 
-
-      </div>
-
-      </motion.div>
-    </Tilt>
-  )
-}
-const About = () => {
-  return (
-    <>
-      <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>INTRODUCTION</p>
-        <h2 className={styles.sectionHeadText}>Overview</h2>
-      </motion.div>
-
-      <motion.p
-      variants={fadeIn("","",0.1,1)}
-      className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
-      >
-      A software engineer pursuing a Bsc. in Computer Engineering at Vistula University. I thrive on unraveling software puzzles and crafting applications that are both technically robust and delightfully user-friendly.
-      I bring a versatile skill set to the table, proficient in JavaScript, Java, Python and c# and adept at crafting full-stack web solutions using React, Next.js, and Django, along with mastering HTML, CSS, Git, and GitHub. My expertise extends to leveraging Amazon S3, React Native, MongoDB and SQL, showcasing a deep understanding of both front-end and back-end development. With a strong grasp of data structures and algorithms, backed by hands-on projects and coursework, I possess the theoretical knowledge and practical acumen necessary for a thriving career in software engineering 
-
-      </motion.p>
-      <div className='mt-20 flex flex-wrap gap-10'>
-        {services.map((service,index) => (
-          <ServiceCard key={service.title} index = {index} {...service} />
-          )
-        )
-        }
-      </div>
-    </>
-  )
-}
-
-export default SectionWrapper(About, "about");
+export default About;

@@ -1,0 +1,53 @@
+.career-section { scroll-margin-top: 80px; }
+.career-introduction { max-width: 760px; margin-top: 22px; color: #dfd9ff; font-size: 17px; line-height: 1.85; }
+.career-timeline { position: relative; list-style: none; margin-top: 48px; padding: 0; }
+.career-timeline::before { content: ''; position: absolute; top: 24px; bottom: 24px; left: 23px; width: 2px; background: linear-gradient(#22d3ee, #915eff, rgba(145,94,255,.2)); }
+.career-entry { position: relative; padding-left: 80px; margin-bottom: 28px; }
+.career-entry:last-child { margin-bottom: 0; }
+.career-marker { position: absolute; left: 0; top: 24px; width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid #915eff; border-radius: 50%; background: #151030; color: #67e8f9; font-size: 12px; font-weight: 700; }
+.career-card { max-width: 960px; padding: 28px 32px; border: 1px solid rgba(192,132,252,.25); border-radius: 20px; background: rgba(21,16,48,.88); }
+.career-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; color: #aaa6c3; font-size: 13px; margin-bottom: 18px; }
+.career-category { color: #67e8f9; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.career-card h3 { color: #fff; font-size: clamp(20px, 2.1vw, 26px); font-weight: 700; line-height: 1.4; }
+.career-organization { margin-top: 10px; color: #dfd9ff; font-size: 15px; font-weight: 600; }
+.career-location { margin-top: 5px; color: #aaa6c3; font-size: 13px; }
+.career-points, .project-details { padding-left: 19px; list-style: disc; color: #dfd9ff; font-size: 14px; line-height: 1.85; }
+.career-points { margin-top: 22px; }
+.career-points li + li, .project-details li + li { margin-top: 9px; }
+.engineering-project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-top: 48px; }
+.engineering-project { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid rgba(192,132,252,.3); border-radius: 20px; background: rgba(21,16,48,.9); }
+.project-architecture { padding: 28px; border-bottom: 1px solid rgba(192,132,252,.2); background: linear-gradient(135deg, rgba(109,40,217,.2), rgba(14,116,144,.16)); }
+.project-panel-label { display: flex; justify-content: space-between; gap: 16px; color: #67e8f9; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.project-flow { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin: 28px 0 20px; list-style: none; }
+.project-flow li { display: flex; align-items: center; gap: 10px; color: #dfd9ff; font-size: 13px; }
+.project-flow li + li::before { content: '→'; color: #c084fc; }
+.project-architecture > p { color: #aaa6c3; font-size: 13px; line-height: 1.7; }
+.engineering-project-body { display: flex; flex-direction: column; flex: 1; padding: 28px; }
+.engineering-project h3 { color: #fff; font-size: 25px; font-weight: 700; line-height: 1.4; }
+.project-summary { margin-top: 14px; color: #dfd9ff; font-size: 15px; line-height: 1.85; }
+.project-details { margin-top: 22px; }
+.project-technologies { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 24px 0; }
+.project-technologies li, .ml-status { padding: 6px 10px; border: 1px solid rgba(192,132,252,.3); border-radius: 8px; color: #dfd9ff; font-size: 12px; }
+.project-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; }
+.project-links a { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; padding: 10px 16px; border: 1px solid #77708b; border-radius: 10px; color: #fff; font-size: 14px; font-weight: 600; }
+.project-links a:hover { border-color: #67e8f9; color: #67e8f9; }
+.project-links a:focus-visible { outline: 2px solid #67e8f9; outline-offset: 4px; }
+.ml-lab { padding: 32px; margin-top: 32px; border: 1px solid rgba(192,132,252,.25); border-radius: 20px; background: rgba(21,16,48,.8); }
+.ml-lab-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; }
+.ml-lab h3 { margin-top: 8px; color: #fff; font-size: 26px; font-weight: 700; }
+.ml-lab-introduction { max-width: 850px; margin-top: 20px; color: #dfd9ff; font-size: 15px; line-height: 1.85; }
+.ml-experiment-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; list-style: none; margin-top: 28px; }
+.ml-experiment-grid li { border-top: 1px solid rgba(192,132,252,.25); padding-top: 20px; }
+.ml-experiment-grid h4 { color: #fff; font-size: 17px; font-weight: 600; line-height: 1.5; }
+.ml-experiment-grid p { margin-top: 10px; color: #aaa6c3; font-size: 14px; line-height: 1.8; }
+@media (max-width: 767px) {
+  .engineering-project-grid, .ml-experiment-grid { grid-template-columns: 1fr; }
+  .career-entry { padding-left: 52px; }
+  .career-marker { width: 32px; height: 32px; font-size: 9px; }
+  .career-timeline::before { left: 15px; }
+  .career-card { padding: 22px 20px; }
+  .career-meta { flex-direction: column; gap: 8px; }
+  .career-introduction { font-size: 16px; }
+  .project-architecture, .engineering-project-body, .ml-lab { padding: 24px; }
+  .engineering-project h3 { font-size: 23px; }
+}
