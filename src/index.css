@@ -202,3 +202,92 @@
       -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
   }
 }
+/* Decorative CSS stars: three layers, no canvas or pointer handling. */
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  contain: strict;
+  pointer-events: none;
+}
+
+.starfield-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: calc(-1 * var(--star-tile-width));
+  bottom: calc(-1 * var(--star-tile-height));
+  pointer-events: none;
+  background-repeat: repeat;
+  animation: starfield-drift 58.971s linear infinite,
+    starfield-twinkle 11s ease-in-out infinite alternate;
+}
+
+.starfield-far {
+  --star-tile-width: 480px;
+  --star-tile-height: 520px;
+  opacity: 0.35;
+  background-size: var(--star-tile-width) var(--star-tile-height);
+  background-image:
+    radial-gradient(circle at 31px 47px, #dce5ff 0.7px, transparent 1.2px),
+    radial-gradient(circle at 163px 113px, #dce5ff 0.7px, transparent 1.2px),
+    radial-gradient(circle at 289px 29px, #dce5ff 0.7px, transparent 1.2px),
+    radial-gradient(circle at 427px 191px, #dce5ff 0.7px, transparent 1.2px),
+    radial-gradient(circle at 73px 327px, #dce5ff 0.7px, transparent 1.2px),
+    radial-gradient(circle at 231px 419px, #dce5ff 0.7px, transparent 1.2px),
+    radial-gradient(circle at 389px 361px, #dce5ff 0.7px, transparent 1.2px);
+}
+
+.starfield-mid {
+  --star-tile-width: 610px;
+  --star-tile-height: 570px;
+  opacity: 0.55;
+  background-size: var(--star-tile-width) var(--star-tile-height);
+  background-image:
+    radial-gradient(circle at 101px 83px, #e5ddff 1px, transparent 1.6px),
+    radial-gradient(circle at 347px 173px, #e5ddff 1px, transparent 1.6px),
+    radial-gradient(circle at 529px 41px, #e5ddff 1px, transparent 1.6px),
+    radial-gradient(circle at 193px 389px, #e5ddff 1px, transparent 1.6px),
+    radial-gradient(circle at 471px 493px, #e5ddff 1px, transparent 1.6px);
+  animation-duration: 46.382s, 13s;
+  animation-delay: -29s, -7s;
+}
+
+.starfield-near {
+  --star-tile-width: 790px;
+  --star-tile-height: 690px;
+  opacity: 0.7;
+  background-size: var(--star-tile-width) var(--star-tile-height);
+  background-image:
+    radial-gradient(circle at 239px 149px, #f1e8ff 1.5px, transparent 2.2px),
+    radial-gradient(circle at 653px 327px, #f1e8ff 1.5px, transparent 2.2px),
+    radial-gradient(circle at 83px 583px, #f1e8ff 1.5px, transparent 2.2px);
+  animation-duration: 37.462s, 17s;
+  animation-delay: -41s, -11s;
+}
+
+@keyframes starfield-drift {
+  /* Travel one complete repeating tile so the loop has no visible jump. */
+  from { transform: translate3d(0, 0, 0); }
+  to {
+    transform: translate3d(
+      calc(-1 * var(--star-tile-width)),
+      calc(-1 * var(--star-tile-height)),
+      0
+    );
+  }
+}
+
+@keyframes starfield-twinkle {
+  from { opacity: 0.3; }
+  to { opacity: 0.65; }
+}
+
+@media (max-width: 639px) {
+  .starfield-near { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .starfield-layer { animation: none; transform: none; }
+}
