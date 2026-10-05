@@ -1,5 +1,4 @@
 import React from 'react'
-import { StarsCanvas } from './canvas'
 import {motion} from "framer-motion"
 import { ComputersCanvas } from '/components/canvas'
 import {styles} from "/src/styles.js"
@@ -52,7 +51,7 @@ const Hero = () => {
         loop
         className="absolute top-0 h-full w-full object-cover"
       >
-        <source src="/public/public_blackhole.webm" type="video/webm" />
+        <source src="/public_blackhole.webm" type="video/webm" />
       </video>
 
       {/* Content Overlay */}
@@ -68,14 +67,10 @@ const Hero = () => {
           />
         </div>
         <div>
-          <h1 className="${styles.heroHeadText}lg:text-[80px] sm:text-[60px] xs:text-[50px] text-[40px] lg:leading-[98px] mt-2 text-white">Hello, I'm <span className=' sm:text-[75px] xs:text-[65px] text-[55px] lg:leading-[125px] text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500'>Tevin</span></h1>
-          <p className="${styles.heroSubText}  mt-2 text-white-100 sm:block hidden">I'm a software engineer 
+          <h1 className={`${styles.heroHeadText} text-white`}>Hello, I'm <span className=' sm:text-[75px] xs:text-[65px] text-[55px] lg:leading-[125px] text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500'>Tevin</span></h1>
+          <p className={`${styles.heroSubText} mt-2 text-white-100 sm:block hidden`}>I'm a software engineer
             <br className='sm:block hidden' />Turning ideas into tomorrow's ventures.</p>
         </div>
-      </div>
-       {/* StarsCanvas with higher z-index */}
-       <div className="absolute inset-0 z-0 w-full h-full pointer-events-none"> {/* Higher z-index for StarsCanvas */}
-       <StarsCanvas />
       </div>
     </div>
     

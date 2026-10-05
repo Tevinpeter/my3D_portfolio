@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import {styles} from '/src/styles.js'
 import { navLinks } from '/src/constants'
 import { logo, closeIcon,menuIcon,menu,close} from "/src/assets";
+import navbarLogo from "/src/assets/t-low-resolution-logo-color-on-transparent-background.png";
 
 
 
@@ -26,7 +27,7 @@ const Navbar = () => {
           window.scrollTo(0, 0);
         }}
       >
-        <img src={"src/assets/t-low-resolution-logo-color-on-transparent-background.png"} alt='logo' className='w-9 h-9 object-contain' />
+        <img src={navbarLogo} alt='logo' className='w-9 h-9 object-contain' />
         <p className='text-white text-[18px] font-bold cursor-pointer flex '>
           Tevin &nbsp;
           <span className='sm:block hidden'> | MyDune</span>
