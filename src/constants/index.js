@@ -23,6 +23,9 @@ import {
     jobit,
     tripguide,
     threejs,
+    todo,
+    miniHR
+    
   } from "../assets";
   
   export const navLinks = [
@@ -32,7 +35,7 @@ import {
     },
     {
       id: "work",
-      title: "Work",
+      title: "Skills",
     },
     {
       id: "contact",
@@ -46,7 +49,7 @@ import {
       icon: web,
     },
     {
-      title: "React Native Developer",
+      title: "UI/UX Design",
       icon: mobile,
     },
     {
@@ -54,7 +57,7 @@ import {
       icon: backend,
     },
     {
-      title: "Content Creator",
+      title: "Software Prototyping",
       icon: creator,
     },
   ];
@@ -115,38 +118,51 @@ import {
   ];
   
   const experiences = [
+    
+      {
+        title: "Data Analyst",
+        company_name: "WILDAF",
+        icon: reactjs,
+        iconBg: "#E6DEDD",
+        date: "Jan 2023 - Present",
+        points: [
+          "Collecting, processing, and analyzing data to provide actionable insights to stakeholders",
+          "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+          "Utilizing statistical techniques, data visualization tools, and programming languages such as SQL, Python, or R to interpret data trends, patterns, and correlations.",
+          "Participating in code reviews and providing constructive feedback to other developers.",
+        ],
+      },
     {
-      title: "React.js Developer",
-      company_name: "Starbucks",
-      icon: starbucks,
+      title: "Short Summer program facilitator ",
+      company_name: "Tanzania Excellence Institute",
+      icon: reactjs,
       iconBg: "#383E56",
-      date: "March 2020 - April 2021",
+      date: "September 2023 - October 2023",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Lead instructional sessions where you teach React.js fundamentals",
+        "Collaborate with program organizers to design or refine the curriculum for the React.js summer program.",
+        "Provide guidance, troubleshooting assistance, and code reviews to help participants ",
       ],
     },
     {
-      title: "React Native Developer",
-      company_name: "Tesla",
-      icon: tesla,
+      title: "c# Developer",
+      company_name: "Vistula University",
+      icon: reactjs,
       iconBg: "#E6DEDD",
-      date: "Jan 2021 - Feb 2022",
+      date: "Feb 2022 - present",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+        "Created a mini HR project",
+        "Collaborating with fellow students on various task and projects.",
         "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Participating in code reviews and providing constructive feedback to fellow students.",
       ],
     },
     {
-      title: "Web Developer",
-      company_name: "Shopify",
-      icon: shopify,
+      title: "USAID Volunteer",
+      company_name: "USAID",
+      icon: reactjs,
       iconBg: "#383E56",
-      date: "Jan 2022 - Jan 2023",
+      date: "Feb 2022 - Present",
       points: [
         "Developing and maintaining web applications using React.js and other related technologies.",
         "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
@@ -154,19 +170,7 @@ import {
         "Participating in code reviews and providing constructive feedback to other developers.",
       ],
     },
-    {
-      title: "Full stack Developer",
-      company_name: "Meta",
-      icon: meta,
-      iconBg: "#E6DEDD",
-      date: "Jan 2023 - Present",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
+   
   ];
   
   const testimonials = [
@@ -198,9 +202,9 @@ import {
   
   const projects = [
     {
-      name: "Car Rent",
+      name: "Ecommerce Website",
       description:
-        "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+        "Explore a seamless and intuitive online shopping experience on our eCommerce website, crafted with React framework for exceptional performance, responsiveness, and user satisfaction.",
       tags: [
         {
           name: "react",
@@ -216,49 +220,42 @@ import {
         },
       ],
       image: carrent,
-      source_code_link: "https://github.com/",
+      source_code_link: "https://github.com/Tevinpeter/ecommerce_website",
     },
     {
-      name: "Job IT",
+      name: "Todolist App",
       description:
-        "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+        "Discover effortless task management with our TodoList web application, leveraging MongoDB, Express, and EJS for a dynamic and user-friendly experience, seamlessly organizing your tasks with ease.",
       tags: [
         {
-          name: "react",
+          name: "ejs",
           color: "blue-text-gradient",
         },
         {
-          name: "restapi",
+          name: "Express",
           color: "green-text-gradient",
         },
         {
-          name: "scss",
+          name: "MongoDB",
           color: "pink-text-gradient",
         },
       ],
-      image: jobit,
-      source_code_link: "https://github.com/",
+      image: todo,
+      source_code_link: "https://github.com/Tevinpeter/todolist_app",
     },
     {
-      name: "Trip Guide",
+      name: "MiniHR",
       description:
-        "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+        "Efficiently manage your HR tasks with MiniHR, a comprehensive project built on the C#.NET framework.Show casing Object oriented Programming ",
       tags: [
         {
-          name: "nextjs",
+          name: " C#.NET",
           color: "blue-text-gradient",
-        },
-        {
-          name: "supabase",
-          color: "green-text-gradient",
-        },
-        {
-          name: "css",
-          color: "pink-text-gradient",
-        },
+        }
+        
       ],
-      image: tripguide,
-      source_code_link: "https://github.com/",
+      image: miniHR,
+      source_code_link: "https://github.com/Tevinpeter/MiniHR",
     },
   ];
   

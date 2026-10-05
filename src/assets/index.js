@@ -5,6 +5,7 @@ import mobile from "./mobile.png";
 import web from "./web.png";
 import github from "./github.png";
 import menu from "./menu.svg";
+
 import close from "./close.svg";
 import closeIcon from "./close_icon.png";
 import menuIcon from "./menu_icon.png"
@@ -31,6 +32,9 @@ import tesla from "./company/tesla.png";
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+import todo from "/src/assets/to-do-app.png";
+import miniHR from "/src/assets/myhrm-human-resource-management.jpg";
+
 
 export  {
   logo,
@@ -62,5 +66,8 @@ export  {
   jobit,
   tripguide,
   closeIcon,
-  menuIcon
+  menuIcon,
+  todo,
+  miniHR
+
 };

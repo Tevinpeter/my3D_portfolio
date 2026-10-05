@@ -44,8 +44,8 @@ const About = () => {
       variants={fadeIn("","",0.1,1)}
       className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
-      A dedicated front end developer with over 10 years of experience in helping companies develop user-friendly web applications at SaaSCreative, involved in over $30M+ valued projects in the last year. 
-      Seeking to apply my expertise in a larger-scale project at JTK, solving more complex problems and continuously learning from the experts.
+      A software engineer pursuing a Bsc. in Computer Engineering at Vistula University. I thrive on unraveling software puzzles and crafting applications that are both technically robust and delightfully user-friendly.
+      I bring a versatile skill set to the table, proficient in JavaScript, Java, Python and c# and adept at crafting full-stack web solutions using React, Next.js, and Django, along with mastering HTML, CSS, Git, and GitHub. My expertise extends to leveraging Amazon S3, React Native, MongoDB and SQL, showcasing a deep understanding of both front-end and back-end development. With a strong grasp of data structures and algorithms, backed by hands-on projects and coursework, I possess the theoretical knowledge and practical acumen necessary for a thriving career in software engineering 
 
       </motion.p>
       <div className='mt-20 flex flex-wrap gap-10'>

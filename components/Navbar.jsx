@@ -29,7 +29,7 @@ const Navbar = () => {
         <img src={"src/assets/t-low-resolution-logo-color-on-transparent-background.png"} alt='logo' className='w-9 h-9 object-contain' />
         <p className='text-white text-[18px] font-bold cursor-pointer flex '>
           Tevin &nbsp;
-          <span className='sm:block hidden'> | JavaScript Mastery</span>
+          <span className='sm:block hidden'> | MyDune</span>
         </p>
       </Link>
 

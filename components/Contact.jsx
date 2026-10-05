@@ -6,6 +6,12 @@ import {styles} from "/src/styles.js";
 import { EarthCanvas } from '/components/canvas'
 import { SectionWrapper } from '/src/hoc';
 import { slideIn } from "/src/utils/motion";
+
+//template_y0hxr0o
+//service_3t9u90f
+//vuBZrJmMuSJfyVXqZ - public key
+//zwOT5J1kPUCDb2lQa - new public key
+
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({
@@ -16,9 +22,52 @@ const Contact = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    const { target } = e;
+    const { name, value } = target;
 
-  const handleSubmit = (e) => {};
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs
+      .send(
+        "service_3t9u90f",
+        "template_y0hxr0o",
+        {
+          from_name: form.name,
+          to_name: "Tevin",
+          from_email: form.email,
+          to_email: "tevinpeter74@gmail.com",
+          message: form.message,
+        },
+        'zwOT5J1kPUCDb2lQa'
+      )
+      .then(
+        () => {
+          setLoading(false);
+          alert("Thank you for reaching out. I'll respond to you at the earliest opportunity.");
+
+          setForm({
+            name: "",
+            email: "",
+            message: "",
+          });
+        },
+        (error) => {
+          setLoading(false);
+          console.error(error);
+
+          alert("Apologies for the inconvenience, something went wrong. Please try again.");
+        }
+      );
+  };
   return (
     <div
       className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}

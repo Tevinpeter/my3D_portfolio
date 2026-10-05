@@ -5,9 +5,16 @@
   return (
     <BrowserRouter>
       <div className='relative z-0 bg-primary'>
+         
         <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
           <Navbar />
-          <Hero />
+          
+          <div className = "flex flex-col h-[850px] gap-20">
+              
+              <Hero />
+
+          </div>
+          
         </div>
         <About />
         <Experience />
@@ -16,8 +23,9 @@
        
         <div className='relative z-0'>
           <Contact />
-          <StarsCanvas />
+          
         </div>
+        <StarsCanvas />  
       </div>
     </BrowserRouter>
   )
