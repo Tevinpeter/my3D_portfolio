@@ -35,10 +35,9 @@ const Hero = () => {
           <button type='button' className='portfolio-cta portfolio-cta-primary' onClick={exploreWork}>
             Explore My Work
           </button>
-          <button type='button' className='portfolio-cta portfolio-cta-secondary' disabled aria-describedby='cv-unavailable'>
+          <a href='/Tevin_Mallya_CV.pdf' download='Tevin_Mallya_CV.pdf' className='portfolio-cta portfolio-cta-secondary' style={{ cursor: 'pointer' }}>
             Download CV
-          </button>
-          <span id='cv-unavailable' className='sr-only'>CV download is not yet available.</span>
+          </a>
         </div>
         <nav className='portfolio-socials' aria-label='Professional profiles and email'>
           <a href='https://github.com/Tevinpeter' target='_blank' rel='noopener noreferrer'>GitHub</a>
