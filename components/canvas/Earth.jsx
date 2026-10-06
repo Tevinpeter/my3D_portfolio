@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import { useReducedMotion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
@@ -12,6 +13,7 @@ const Earth = () => {
   );
 };
 const EarthCanvas = () => {
+  const reducedMotion = useReducedMotion();
   return (
     <Canvas
       shadows
@@ -27,7 +29,7 @@ const EarthCanvas = () => {
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
-          autoRotate
+          autoRotate={!reducedMotion}
           enableZoom={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}

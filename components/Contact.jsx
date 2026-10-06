@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
 import {styles} from "/src/styles.js";
@@ -7,12 +7,8 @@ import { EarthCanvas } from '/components/canvas'
 import { SectionWrapper } from '/src/hoc';
 import { slideIn } from "/src/utils/motion";
 
-//template_y0hxr0o
-//service_3t9u90f
-//vuBZrJmMuSJfyVXqZ - public key
-//zwOT5J1kPUCDb2lQa - new public key
-
 const Contact = () => {
+  const reducedMotion = useReducedMotion();
   const formRef = useRef();
   const [form, setForm] = useState({
     name: "",
@@ -21,6 +17,8 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState({ type: '', message: '' });
+  const sendingRef = useRef(false);
 
   const handleChange = (e) => {
     const { target } = e;
@@ -34,7 +32,14 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (sendingRef.current) return;
+    if (!form.name.trim() || !form.message.trim()) {
+      setStatus({ type: 'error', message: 'Please enter your name and a message.' });
+      return;
+    }
+    sendingRef.current = true;
     setLoading(true);
+    setStatus({ type: '', message: '' });
 
     emailjs
       .send(
@@ -51,8 +56,9 @@ const Contact = () => {
       )
       .then(
         () => {
+          sendingRef.current = false;
           setLoading(false);
-          alert("Thank you for reaching out. I'll respond to you at the earliest opportunity.");
+          setStatus({ type: 'success', message: "Thank you for reaching out. I'll respond to you at the earliest opportunity." });
 
           setForm({
             name: "",
@@ -61,10 +67,10 @@ const Contact = () => {
           });
         },
         (error) => {
+          sendingRef.current = false;
           setLoading(false);
-          console.error(error);
-
-          alert("Apologies for the inconvenience, something went wrong. Please try again.");
+          console.error('Contact delivery failed.', { status: error.status });
+          setStatus({ type: 'error', message: 'Something went wrong. Please try again, or use the email link above.' });
         }
       );
   };
@@ -73,15 +79,16 @@ const Contact = () => {
       className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
     >
       <motion.div
-        variants={slideIn("left", "tween", 0.2, 1)}
+        variants={reducedMotion ? undefined : slideIn("left", "tween", 0.2, 1)}
         className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
       >
         <p className={styles.sectionSubText}>Get in touch</p>
-        <h3 className={styles.sectionHeadText}>Contact.</h3>
+        <h2 className={styles.sectionHeadText}>Contact.</h2>
 
         <form
           ref={formRef}
           onSubmit={handleSubmit}
+          aria-busy={loading}
           className='mt-12 flex flex-col gap-8'
         >
           <label className='flex flex-col'>
@@ -89,6 +96,8 @@ const Contact = () => {
             <input
               type='text'
               name='name'
+              required
+              autoComplete='name'
               value={form.name}
               onChange={handleChange}
               placeholder="What's your good name?"
@@ -100,6 +109,8 @@ const Contact = () => {
             <input
               type='email'
               name='email'
+              required
+              autoComplete='email'
               value={form.email}
               onChange={handleChange}
               placeholder="What's your web address?"
@@ -111,6 +122,7 @@ const Contact = () => {
             <textarea
               rows={7}
               name='message'
+              required
               value={form.message}
               onChange={handleChange}
               placeholder='What you want to say?'
@@ -120,15 +132,21 @@ const Contact = () => {
 
           <button
             type='submit'
+            disabled={loading}
+            aria-disabled={loading}
             className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
           >
             {loading ? "Sending..." : "Send"}
           </button>
+          <p role='status' aria-live='polite' aria-atomic='true' className={status.type === 'error' ? 'text-red-300 text-[14px]' : 'text-white-100 text-[14px]'}>
+            {status.message}
+          </p>
         </form>
       </motion.div>
 
       <motion.div
-        variants={slideIn("right", "tween", 0.2, 1)}
+        variants={reducedMotion ? undefined : slideIn("right", "tween", 0.2, 1)}
+        aria-hidden='true'
         className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
       >
         <EarthCanvas />

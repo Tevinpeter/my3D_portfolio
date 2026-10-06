@@ -1,9 +1,9 @@
-import React,{useEffect,useState} from 'react';
+import React,{useRef,useState} from 'react';
 import {Link} from 'react-router-dom';
 
 import {styles} from '/src/styles.js'
 import { navLinks } from '/src/constants'
-import { logo, closeIcon,menuIcon,menu,close} from "/src/assets";
+import { menu,close} from "/src/assets";
 import navbarLogo from "/src/assets/t-low-resolution-logo-color-on-transparent-background.png";
 
 
@@ -12,8 +12,16 @@ import navbarLogo from "/src/assets/t-low-resolution-logo-color-on-transparent-b
 const Navbar = () => {
   const [active, setActive] = useState("")
   const [toggle,setToggle] = useState(false);
+  const menuButtonRef = useRef(null);
   return (
     <nav
+    aria-label='Main navigation'
+    onKeyDown={(event) => {
+      if (event.key === 'Escape' && toggle) {
+        setToggle(false);
+        menuButtonRef.current?.focus();
+      }
+    }}
     className={`${
       styles.paddingX
     } w-full flex items-center py-5 fixed top-0 z-20 bg-primary`}
@@ -24,10 +32,11 @@ const Navbar = () => {
         className='flex items-center gap-2'
         onClick={() => {
           setActive("");
+          setToggle(false);
           window.scrollTo(0, 0);
         }}
       >
-        <img src={navbarLogo} alt='logo' className='w-9 h-9 object-contain' />
+        <img src={navbarLogo} alt='' className='w-9 h-9 object-contain' />
         <p className='text-white text-[18px] font-bold cursor-pointer flex '>
           Tevin &nbsp;
           <span className='sm:block hidden'> | MyDune</span>
@@ -49,13 +58,22 @@ const Navbar = () => {
       </ul>
 
       <div className='sm:hidden flex flex-1 justify-end items-center'>
+        <button
+          ref={menuButtonRef}
+          type='button'
+          aria-label={toggle ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={toggle}
+          aria-controls='mobile-navigation'
+          className='flex items-center justify-center w-11 h-11'
+          onClick={() => setToggle(!toggle)}
+        >
         <img 
           src= {!toggle?menu:close}
-          alt = "menu"
+          alt = ""
           className='w-[28px] h-[28px] object-contain cursor-pointer'
-          onClick={()=> setToggle(!toggle)}
         />
-        <div className={`${!toggle?"hidden":"flex"} p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-lg`}>
+        </button>
+        <div id='mobile-navigation' className={`${!toggle?"hidden":"flex"} p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-lg`}>
         <ul className='list-none flex justify-end items-start flex-col gap-4'>
         {navLinks.map((nav) => (
           <li

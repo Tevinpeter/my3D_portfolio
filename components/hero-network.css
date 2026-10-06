@@ -1,0 +1,42 @@
+.hero-scene {
+  position: relative;
+}
+
+.hero-network {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 84% 35%, rgba(91, 33, 182, .15), transparent 48%),
+    radial-gradient(ellipse at 97% 58%, rgba(8, 145, 178, .06), transparent 35%);
+  -webkit-mask-image: linear-gradient(#000 78%, transparent);
+  mask-image: linear-gradient(#000 78%, transparent);
+}
+
+.hero-network * { pointer-events: none; }
+.hero-network-art { width: 100%; height: 100%; }
+.hero-network-connections { opacity: .3; }
+.hero-network-nodes { opacity: .7; }
+.hero-network-periphery { opacity: .12; }
+.hero-network-beacon { animation: hero-node-glow 9s ease-in-out infinite alternate; }
+.hero-network-beacon:nth-child(3n) { animation-delay: -3s; }
+.hero-network-beacon:nth-child(2n) { animation-delay: -6s; }
+
+@keyframes hero-node-glow {
+  from { opacity: .45; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 639px) {
+  .hero-network { opacity: .65; }
+  .hero-network-art { width: 900px; max-width: none; position: absolute; right: -310px; }
+  .hero-network-connections path:nth-child(2n),
+  .hero-network-nodes > g:nth-child(2n),
+  .hero-network-periphery { display: none; }
+  .hero-network-beacon { animation: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-network-beacon { animation: none; }
+}

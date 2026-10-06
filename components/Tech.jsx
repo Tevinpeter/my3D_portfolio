@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useReducedMotion } from 'framer-motion';
 import { SectionWrapper } from '/src/hoc';
 import { technologies } from '/src/constants';
 
-const Tech = () => (
+const Tech = () => {
+  const reducedMotion = useReducedMotion();
+  const [desktop, setDesktop] = useState(() => window.matchMedia('(min-width: 1024px)').matches);
+  useEffect(() => {
+    const query = window.matchMedia('(min-width: 1024px)');
+    const update = () => setDesktop(query.matches);
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
+  return (
   <div className='relative isolate lg:min-h-[450px] lg:flex lg:items-center'>
-    <video
+    {desktop && !reducedMotion && <video
       loop
       muted
       autoPlay
@@ -13,7 +23,7 @@ const Tech = () => (
       aria-hidden='true'
       className='hidden lg:block absolute inset-0 w-full h-full object-contain opacity-40 pointer-events-none'
       src='/encryption.webm'
-    />
+    />}
 
     <ul className='relative w-full flex flex-row flex-wrap justify-center gap-10 list-none'>
       {technologies.map((technology) => (
@@ -37,6 +47,7 @@ const Tech = () => (
       ))}
     </ul>
   </div>
-);
+  );
+};
 
 export default SectionWrapper(Tech, 'skills');
